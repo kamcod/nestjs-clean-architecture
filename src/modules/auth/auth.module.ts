@@ -2,9 +2,10 @@ import {Module} from "@nestjs/common";
 import {AuthController} from "@/modules/auth/presentation/auth.controller";
 import {RegisterNewUser} from "@/modules/auth/application/use-cases/register-user.usecase";
 import {REGISTER_USER_PORT} from "@/modules/auth/application/ports/register-user.port";
+import {UsersModule} from "@/modules/user/user.module";
 
 @Module({
-    imports: [],
+    imports: [UsersModule],
     controllers: [AuthController],
     providers: [
         {

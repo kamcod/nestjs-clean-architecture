@@ -1,0 +1,8 @@
+// This is your PORT (abstraction)
+import { User } from "@/modules/user/application/user.entity";
+
+export const USER_REPOSITORY = 'USER_REPOSITORY'; // Injection token
+
+export interface UserRepository {
+    createUser(userData: Partial<User>): Promise<User>;
+}
