@@ -1,5 +1,5 @@
 import {PrismaService} from "@/shared/infrastructure/prisma/prisma.service";
-import {User} from "@/modules/user/application/user.entity";
+import {User} from "@/modules/user/domain/user.entity";
 import {Injectable} from "@nestjs/common";
 import {UserRepository} from "@/modules/user/application/user.port";
 import {CreateUserDto} from "@/modules/auth/presentation/dtos/user.dto";

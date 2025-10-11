@@ -1,5 +1,5 @@
 // This is your PORT (abstraction)
-import { User } from "@/modules/user/application/user.entity";
+import { User } from "@/modules/user/domain/user.entity";
 
 export const USER_REPOSITORY = 'USER_REPOSITORY'; // Injection token
 
