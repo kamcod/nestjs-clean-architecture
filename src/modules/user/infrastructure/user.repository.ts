@@ -13,6 +13,14 @@ export class UsersRepository implements UserRepository{
             data: userData,
         });
 
-        return new User(record.id, record.email, record.password, record.name, record.createdAt, record.updatedAt);
+        return new User(record.id, record.email, record.name, record.createdAt, record.updatedAt);
+    }
+
+    async findByEmail(email: string): Promise<User | null> {
+        const user = await this.prisma.user.findUnique({
+            where: { email },
+        });
+        if (!user) return null;
+        return new User(user.id, user.email, user.name);
     }
 }

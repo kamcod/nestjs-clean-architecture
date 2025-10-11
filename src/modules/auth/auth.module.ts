@@ -3,11 +3,13 @@ import {AuthController} from "@/modules/auth/presentation/auth.controller";
 import {RegisterNewUser} from "@/modules/auth/application/use-cases/register-user.usecase";
 import {REGISTER_USER_PORT} from "@/modules/auth/application/ports/register-user.port";
 import {UsersModule} from "@/modules/user/user.module";
+import {BcryptService} from "@/modules/auth/infrastructure/bcrypt.service";
 
 @Module({
     imports: [UsersModule],
     controllers: [AuthController],
     providers: [
+        BcryptService,
         {
             provide: REGISTER_USER_PORT, useClass: RegisterNewUser
         }

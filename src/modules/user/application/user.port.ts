@@ -5,4 +5,5 @@ export const USER_REPOSITORY = 'USER_REPOSITORY'; // Injection token
 
 export interface UserRepository {
     createUser(userData: Partial<User>): Promise<User>;
+    findByEmail(email: string): Promise<User | null>;
 }
