@@ -4,11 +4,13 @@ import {ConflictException, Inject} from "@nestjs/common";
 import {USER_REPOSITORY} from "@/modules/user/application/user.port";
 import {UsersRepository} from "@/modules/user/infrastructure/user.repository";
 import {BcryptService} from "@/modules/auth/infrastructure/bcrypt.service";
+import {BCRYPT_SERVICE} from "@/modules/auth/application/ports/bcrypt.port";
 
 export class RegisterNewUser implements RegisterUserPort {
     constructor(
         @Inject(USER_REPOSITORY)
         private readonly userRepository: UsersRepository,
+        @Inject(BCRYPT_SERVICE)
         private readonly bcrypt: BcryptService
     ) {}
     async register(user: CreateUserDto) {
