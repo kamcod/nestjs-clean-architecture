@@ -13,7 +13,7 @@ export class UsersRepository implements UserRepository{
             data: userData,
         });
 
-        return new User(record.id, record.email, record.name, record.createdAt, record.updatedAt);
+        return new User(record.id, record.email, record.name, record.password, record.createdAt, record.updatedAt);
     }
 
     async findByEmail(email: string): Promise<User | null> {
@@ -21,6 +21,14 @@ export class UsersRepository implements UserRepository{
             where: { email },
         });
         if (!user) return null;
-        return new User(user.id, user.email, user.name);
+        return new User(user.id, user.email, user.name, user.password);
+    }
+
+    async findByID(id: string): Promise<User | null> {
+        const user = await this.prisma.user.findUnique({
+            where: { id },
+        });
+        if (!user) return null;
+        return new User(user.id, user.email, user.name, user.password);
     }
 }

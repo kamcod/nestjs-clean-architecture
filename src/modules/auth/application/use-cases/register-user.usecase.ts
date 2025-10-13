@@ -1,5 +1,5 @@
 import {CreateUserDto} from "@/modules/auth/presentation/dtos/user.dto";
-import {RegisterUserPort} from "@/modules/auth/application/ports/register-user.port";
+import {RegisterUserPort} from "@/modules/auth/application/ports/user.port";
 import {ConflictException, Inject} from "@nestjs/common";
 import {USER_REPOSITORY} from "@/modules/user/application/user.port";
 import {UsersRepository} from "@/modules/user/infrastructure/user.repository";

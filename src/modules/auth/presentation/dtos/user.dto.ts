@@ -12,3 +12,12 @@ export class CreateUserDto {
     @IsNotEmpty({ message: 'Name is required' })
     name: string;
 }
+
+export class LoginUserDto {
+    @IsEmail({}, { message: 'Invalid email format' })
+    email: string;
+
+    @IsString()
+    @MinLength(6)
+    password: string;
+}
