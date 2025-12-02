@@ -9,16 +9,19 @@ export class CollaborationGateway implements OnModuleInit {
 
     onModuleInit() {
         const server = http.createServer();
-        const wss = new WebSocket.Server({ server });
+        const wss = new WebSocket.Server({ noServer: true });
 
-        wss.on('connection', (ws, req) => {
-            this.yjsService.handleConnection(ws, req);
+        // Handle WebSocket upgrade requests
+        server.on('upgrade', (request, socket, head) => {
+            wss.handleUpgrade(request, socket, head, (ws) => {
+                this.yjsService.handleConnection(ws, request);
+            });
         });
 
         const PORT = 1234;
         const HOST = '0.0.0.0';
         server.listen(PORT, HOST, () => {
-            console.log(`✅ Yjs Collaboration WebSocket running on ws://localhost:${PORT}`);
+            console.log(`✅ Hocuspocus WebSocket server running on ws://localhost:${PORT}`);
         });
     }
 }
